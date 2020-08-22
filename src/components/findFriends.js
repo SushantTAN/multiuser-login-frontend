@@ -60,13 +60,13 @@ setSearch(e){
 
 follow(c){
     let followObj = {from:  localStorage.getItem("loggeduser"), to: c._id}
-    axios.post('http://localhost:9000/api/user/follow', followObj)
+    axios.post('https://polar-plains-75515.herokuapp.com/api/user/follow', followObj)
         .then(
-            axios.post('http://localhost:9000/api/user/following', followObj)
+            axios.post('https://polar-plains-75515.herokuapp.com/api/user/following', followObj)
                 .then(() => {
                     console.log("followed");
                     
-                    axios.get('http://localhost:9000/api/user/loggeduser/' + localStorage.getItem("loggeduser"))
+                    axios.get('https://polar-plains-75515.herokuapp.com/api/user/loggeduser/' + localStorage.getItem("loggeduser"))
                         .then(res => {
                             if(res.data){
                                 this.setState({
@@ -85,13 +85,13 @@ follow(c){
 
 unfollow(c){
     let followObj = {from:  localStorage.getItem("loggeduser"), to: c._id}
-    axios.post('http://localhost:9000/api/user/unfollowing', followObj)
+    axios.post('https://polar-plains-75515.herokuapp.com/api/user/unfollowing', followObj)
         .then(
-            axios.post('http://localhost:9000/api/user/unfollow', followObj)
+            axios.post('https://polar-plains-75515.herokuapp.com/api/user/unfollow', followObj)
                 .then(() => {
                     console.log("unfollowed");
 
-                    axios.get('http://localhost:9000/api/user/loggeduser/' + localStorage.getItem("loggeduser"))
+                    axios.get('https://polar-plains-75515.herokuapp.com/api/user/loggeduser/' + localStorage.getItem("loggeduser"))
                         .then(res => {
                             if(res.data){
                                 this.setState({
@@ -131,7 +131,7 @@ renderButton(c){
 }
 
 componentDidMount(){
-    axios.get('http://localhost:9000/api/user/allusers')
+    axios.get('https://polar-plains-75515.herokuapp.com/api/user/allusers')
         .then(res => {
             if(res.data){
             this.setState({
@@ -141,7 +141,7 @@ componentDidMount(){
         })
         .catch(err => console.log(err));
 
-        axios.get('http://localhost:9000/api/user/loggeduser/' + localStorage.getItem("loggeduser"))
+        axios.get('https://polar-plains-75515.herokuapp.com/api/user/loggeduser/' + localStorage.getItem("loggeduser"))
         .then(res => {
             if(res.data){
                 this.setState({
