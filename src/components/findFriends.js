@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import { Badge, Fab } from '@material-ui/core';
 
 import Navbar from './navbar';
 
@@ -19,6 +20,7 @@ class FindFriends extends Component {
         this.state = { 
             users: [],
             following: [],
+            followers: [],
 
             searchbar: "",
             filtered: [],
@@ -58,13 +60,13 @@ setSearch(e){
 
 follow(c){
     let followObj = {from:  localStorage.getItem("loggeduser"), to: c._id}
-    axios.post('https://polar-plains-75515.herokuapp.com/api/user/follow', followObj)
+    axios.post('http://localhost:9000/api/user/follow', followObj)
         .then(
-            axios.post('https://polar-plains-75515.herokuapp.com/api/user/following', followObj)
+            axios.post('http://localhost:9000/api/user/following', followObj)
                 .then(() => {
                     console.log("followed");
                     
-                    axios.get('https://polar-plains-75515.herokuapp.com/api/user/loggeduser/' + localStorage.getItem("loggeduser"))
+                    axios.get('http://localhost:9000/api/user/loggeduser/' + localStorage.getItem("loggeduser"))
                         .then(res => {
                             if(res.data){
                                 this.setState({
@@ -83,13 +85,13 @@ follow(c){
 
 unfollow(c){
     let followObj = {from:  localStorage.getItem("loggeduser"), to: c._id}
-    axios.post('https://polar-plains-75515.herokuapp.com/api/user/unfollowing', followObj)
+    axios.post('http://localhost:9000/api/user/unfollowing', followObj)
         .then(
-            axios.post('https://polar-plains-75515.herokuapp.com/api/user/unfollow', followObj)
+            axios.post('http://localhost:9000/api/user/unfollow', followObj)
                 .then(() => {
                     console.log("unfollowed");
 
-                    axios.get('https://polar-plains-75515.herokuapp.com/api/user/loggeduser/' + localStorage.getItem("loggeduser"))
+                    axios.get('http://localhost:9000/api/user/loggeduser/' + localStorage.getItem("loggeduser"))
                         .then(res => {
                             if(res.data){
                                 this.setState({
@@ -129,7 +131,7 @@ renderButton(c){
 }
 
 componentDidMount(){
-    axios.get('https://polar-plains-75515.herokuapp.com/api/user/allusers')
+    axios.get('http://localhost:9000/api/user/allusers')
         .then(res => {
             if(res.data){
             this.setState({
@@ -139,11 +141,12 @@ componentDidMount(){
         })
         .catch(err => console.log(err));
 
-        axios.get('https://polar-plains-75515.herokuapp.com/api/user/loggeduser/' + localStorage.getItem("loggeduser"))
+        axios.get('http://localhost:9000/api/user/loggeduser/' + localStorage.getItem("loggeduser"))
         .then(res => {
             if(res.data){
                 this.setState({
-                    following: res.data.following
+                    following: res.data.following,
+                    followers: res.data.followers
                 })
             
             }
@@ -161,6 +164,39 @@ componentDidMount(){
                 <br/>
                 <br/>
                 <br/>
+
+                <div className="container">
+                    <table className="container">
+                        <tr>
+                            <td>
+                                <Badge badgeContent={this.state.followers.length} color="primary">
+                                <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    <Fab variant="extended" color="secondary" aria-label="add">
+                                        Followers
+                                    </Fab>
+                                </a>     
+                                </Badge>
+                            </td>
+                            <td>
+                                <Badge badgeContent={this.state.following.length} color="secondary">
+                                <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    <Fab variant="extended" color="primary" aria-label="add">
+                                        Following
+                                    </Fab>
+                                </a> 
+                                </Badge>
+                            </td>
+                        </tr>
+                       
+                        
+                    </table>
+                    <div class="collapse" id="collapseExample">
+                        <div >
+                          
+                        </div>
+                    </div>
+                </div>
+
                 <h4>Find Friends</h4>
 
                 <div className="container ">
@@ -186,11 +222,6 @@ componentDidMount(){
                     }<br/>
                 </div>
                 </div>
-               
-                
-
-                
-
 
                 <div>
                     <h4>All Members</h4>
