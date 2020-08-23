@@ -39,7 +39,7 @@ class Myposts extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:9000/api', {headers: this.state.headers})
+        axios.get('https://polar-plains-75515.herokuapp.com/api', {headers: this.state.headers})
         .then( res => {
             if(res.data){
                 this.setState({
@@ -47,7 +47,7 @@ class Myposts extends Component {
                     ownerid: res.data._id
                 })
             }
-            axios.get('http://localhost:9000/api/myposts/' + this.state.fetched._id )
+            axios.get('https://polar-plains-75515.herokuapp.com/api/myposts/' + this.state.fetched._id )
             .then( res => {
                 if(res.data){
                     this.setState({
@@ -85,7 +85,7 @@ class Myposts extends Component {
             // Uh-oh, an error occurred!
         });
 
-        axios.delete('http://localhost:9000/api/myposts/delete/' + this.state.selectedpost_id)
+        axios.delete('https://polar-plains-75515.herokuapp.com/api/myposts/delete/' + this.state.selectedpost_id)
             .then(res => {
                 console.log(res.data);
                 this.setState({

@@ -74,7 +74,7 @@ class Auth extends Component {
             imageData: url
             }
 
-            axios.post('http://localhost:9000/api/update/' + this.state.fetched._id, regObj )
+            axios.post('https://polar-plains-75515.herokuapp.com/api/update/' + this.state.fetched._id, regObj )
                 .then((res) => {
                     
                     console.log(res);
@@ -112,7 +112,7 @@ class Auth extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:9000/api', {headers: this.state.headers})
+        axios.get('https://polar-plains-75515.herokuapp.com/api', {headers: this.state.headers})
             .then( res => {
                 if(res.data){
                     this.setState({
@@ -123,7 +123,7 @@ class Auth extends Component {
                     
                 }
 
-                axios.get('http://localhost:9000/api/user/loggeduser/' + this.state.fetched._id)
+                axios.get('https://polar-plains-75515.herokuapp.com/api/user/loggeduser/' + this.state.fetched._id)
                     .then(res => {
                         if(res.data){
                             this.setState({
@@ -134,7 +134,7 @@ class Auth extends Component {
 
                         let arrayObj = {myfollowing: this.state.following.map(c => c)};
                         
-                        axios.post('http://localhost:9000/api/newsfeed', arrayObj)
+                        axios.post('https://polar-plains-75515.herokuapp.com/api/newsfeed', arrayObj)
                             .then(res => {
                                 if(res.data){
                                     this.setState({

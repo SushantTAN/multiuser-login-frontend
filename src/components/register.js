@@ -27,7 +27,7 @@ class Register extends Component {
             email: this.state.email,
             password: this.state.password
         }
-        axios.post('http://localhost:9000/api/user/register', regObj )
+        axios.post('https://polar-plains-75515.herokuapp.com/api/user/register', regObj )
             .then((res) => {
 
                  console.log(res);
