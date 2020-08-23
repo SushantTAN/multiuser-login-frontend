@@ -3,6 +3,9 @@ import axios from 'axios';
 import { storage } from '../firebase-config';
 
 import Navbar from './navbar';
+import FullScreenDialog from './dialog';
+
+
 
 class Myposts extends Component {
     constructor(props) {
@@ -36,7 +39,7 @@ class Myposts extends Component {
     }
 
     componentDidMount(){
-        axios.get('https://polar-plains-75515.herokuapp.com/api', {headers: this.state.headers})
+        axios.get('http://localhost:9000/api', {headers: this.state.headers})
         .then( res => {
             if(res.data){
                 this.setState({
@@ -44,7 +47,7 @@ class Myposts extends Component {
                     ownerid: res.data._id
                 })
             }
-            axios.get('https://polar-plains-75515.herokuapp.com/api/myposts/' + this.state.fetched._id )
+            axios.get('http://localhost:9000/api/myposts/' + this.state.fetched._id )
             .then( res => {
                 if(res.data){
                     this.setState({
@@ -82,7 +85,7 @@ class Myposts extends Component {
             // Uh-oh, an error occurred!
         });
 
-        axios.delete('https://polar-plains-75515.herokuapp.com/api/myposts/delete/' + this.state.selectedpost_id)
+        axios.delete('http://localhost:9000/api/myposts/delete/' + this.state.selectedpost_id)
             .then(res => {
                 console.log(res.data);
                 this.setState({
@@ -103,6 +106,8 @@ class Myposts extends Component {
                 <div className="container">
                  <h3>My Posts</h3>
                 <br/>
+
+               
 
                 <div>
                    {
@@ -138,8 +143,12 @@ class Myposts extends Component {
                                     {c.description}
                                     </p>
                                     <p>
-                                        <button onClick={() => {this.setModal(c)}} type="button" className="btn btn-light" data-toggle="modal" data-target="#exampleModal">
-                                        <img alt="img" src={c.imageData} style={{width: "100%"}} />
+                                        <button onClick={() => {this.setModal(c)}} type="button" className="btn btn-light">
+                                        {/* {<img alt="img" src={c.imageData} style={{width: "100%"}} />} */}
+                                        <FullScreenDialog 
+                                            c = {c.imageData}
+                                            imageData = {this.state.selecetdimage_url}
+                                        />
                                         </button>
                                        
                                     </p>
@@ -152,27 +161,6 @@ class Myposts extends Component {
                 </div>
                 </div>
 
-
-                <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{width: "95%", height: "95%"}}>
-                <div className="modal-dialog modal-xl">
-                    <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div className="modal-body">
-                        <img alt="img" src={this.state.selecetdimage_url} style={{width: "100%"}} />
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary">Save changes</button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                
             </div>
          );
     }

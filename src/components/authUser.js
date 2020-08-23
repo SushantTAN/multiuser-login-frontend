@@ -4,6 +4,7 @@ import axios from 'axios';
 import { storage } from '../firebase-config';
 
 import Navbar from './navbar';
+import FullScreenDialog from './dialog';
 
 class Auth extends Component {
     constructor(props) {
@@ -73,7 +74,7 @@ class Auth extends Component {
             imageData: url
             }
 
-            axios.post('https://polar-plains-75515.herokuapp.com/api/update/' + this.state.fetched._id, regObj )
+            axios.post('http://localhost:9000/api/update/' + this.state.fetched._id, regObj )
                 .then((res) => {
                     
                     console.log(res);
@@ -111,7 +112,7 @@ class Auth extends Component {
     }
 
     componentDidMount(){
-        axios.get('https://polar-plains-75515.herokuapp.com/api', {headers: this.state.headers})
+        axios.get('http://localhost:9000/api', {headers: this.state.headers})
             .then( res => {
                 if(res.data){
                     this.setState({
@@ -122,7 +123,7 @@ class Auth extends Component {
                     
                 }
 
-                axios.get('https://polar-plains-75515.herokuapp.com/api/user/loggeduser/' + this.state.fetched._id)
+                axios.get('http://localhost:9000/api/user/loggeduser/' + this.state.fetched._id)
                     .then(res => {
                         if(res.data){
                             this.setState({
@@ -133,7 +134,7 @@ class Auth extends Component {
 
                         let arrayObj = {myfollowing: this.state.following.map(c => c)};
                         
-                        axios.post('https://polar-plains-75515.herokuapp.com/api/newsfeed', arrayObj)
+                        axios.post('http://localhost:9000/api/newsfeed', arrayObj)
                             .then(res => {
                                 if(res.data){
                                     this.setState({
@@ -207,8 +208,11 @@ class Auth extends Component {
                                         <div className="card bg-light mx-auto" style={{width: "35rem", position: "relative"}}>
                                             <h6>&nbsp;{c.ownername}</h6>
                                             <p>&nbsp;{c.description}</p>
-                                            <button onClick={() => {this.setModal(c)}} type="button" className="btn btn-light" data-toggle="modal" data-target="#exampleModal">
-                                                <img alt="img"  src={c.imageData} style={{width: "100%"}} />
+                                            <button onClick={() => {this.setModal(c)}} type="button" className="btn btn-light">
+                                                <FullScreenDialog 
+                                                    c = {c.imageData}
+                                                    imageData = {this.state.selecetdimage_url}
+                                                />
                                             </button>
                                         </div>
                                         <br />
@@ -219,25 +223,7 @@ class Auth extends Component {
                           }
                         </div>
 
-                        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{width: "95%", height: "95%"}}>
-                            <div className="modal-dialog modal-lg" >
-                                <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body" >
-                                    <img alt="img" className="portrait-image" src={this.state.selecetdimage_url} style={{width: "100%"}} />
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" className="btn btn-primary">Save changes</button>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                     </div>
                     
