@@ -97,8 +97,19 @@ class Myposts extends Component {
 
     render() { 
         return ( 
-            <div>
+            <div style={{backgroundImage: `url(https://i.ytimg.com/vi/I9RbClQ_2Wg/maxresdefault.jpg)`, 
+        
+           
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+            }}>
+                
+                <div > </div>
+
                 <Navbar />
+                <div >
                 <br/>
                 <br/>
                 <br/>
@@ -160,7 +171,8 @@ class Myposts extends Component {
                    }
                 </div>
                 </div>
-
+                </div>
+                <div style={{height: "100vh"}}> ... </div>
             </div>
          );
     }

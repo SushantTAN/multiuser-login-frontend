@@ -6,7 +6,6 @@ import { Badge, Fab } from '@material-ui/core';
 import Navbar from './navbar';
 
 
-
 class FindFriends extends Component {
     constructor(props) {
         super(props);
@@ -55,8 +54,6 @@ setSearch(e){
             })
         }
 }
-
-
 
 follow(c){
     let followObj = {from:  localStorage.getItem("loggeduser"), to: c._id}
@@ -159,7 +156,14 @@ componentDidMount(){
             return <Redirect to="/" />
         }
         return ( 
-            <div>
+            <div style={{backgroundImage: `url(https://i.ytimg.com/vi/I9RbClQ_2Wg/maxresdefault.jpg)`, 
+        
+           
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+            }}>
                 <Navbar />
                 <br/>
                 <br/>
@@ -190,11 +194,7 @@ componentDidMount(){
                        
                         
                     </table>
-                    <div class="collapse" id="collapseExample">
-                        <div >
-                          
-                        </div>
-                    </div>
+                   
                 </div>
 
                 <h4>Find Friends</h4>
@@ -250,6 +250,8 @@ componentDidMount(){
                     </tbody>
                     </table>
                 </div>
+
+                <div style={{height: "100vh"}}> ... </div>
             </div>
          );
     }

@@ -157,7 +157,15 @@ class Auth extends Component {
             return <Redirect to="/" />
         }
         return ( 
-            <div >
+            <div style={{backgroundImage: `url(https://i.ytimg.com/vi/I9RbClQ_2Wg/maxresdefault.jpg)`, 
+        
+           
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+            }}>
+                
                 <Navbar />
                 <div  className="container">
                <div className="container-fluid" style={{top: "2rem"}}>
@@ -229,6 +237,7 @@ class Auth extends Component {
                     
                 </div>
                 </div>
+                <div style={{height: "100vh"}}> ... </div>
             </div>
         );
     }

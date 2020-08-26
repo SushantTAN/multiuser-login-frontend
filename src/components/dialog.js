@@ -42,11 +42,17 @@ export default function FullScreenDialog(props) {
         <AppBar className={classes.appBar}>
           
         </AppBar>
-        <div className="bg-secondary" style={{ textAlign:"center", verticalAlign: "middle", height: "100%", position: "relative"}} >
-          <img alt="img" src={props.imageData} style={{maxWidth: "100%", maxHeight: "100%"}} />
+        <div className="bg-secondary" style={{
+           textAlign:"center",  verticalAlign: "middle", height: "100%", position: "relative",
+           display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+           }} >
+          <img alt="img" src={props.imageData} style={{maxWidth: "100%", maxHeight: "100%",  verticalAlign: "middle",}} />
           <span style={{position: "absolute", top: "0px", right: "0px"}}>
-            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-              <CloseIcon />
+            <IconButton edge="start" color="inherit" style={{fontsize: "100px"}} onClick={handleClose} aria-label="close">
+              <CloseIcon style={{fontsize: "100px"}}/>
             </IconButton>
           </span>
         </div>
