@@ -56,7 +56,7 @@ class Register extends Component {
         if(this.state.password.length < 6 && this.state.password.length !== 0){
             return(
                 <small className="text-danger">
-                    Name should be atlest 6 letters
+                    Password should be atlest 6 letters
                 </small>
             )
         }

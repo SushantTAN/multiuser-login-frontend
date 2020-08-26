@@ -56,7 +56,7 @@ class Login extends Component {
         if(this.state.exampleInputPassword1.length < 6 && this.state.exampleInputPassword1.length !== 0){
             return(
                 <small className="text-danger">
-                    Name should be atlest 6 letters
+                    Password should be atlest 6 letters
                 </small>
             )
         }
