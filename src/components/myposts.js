@@ -99,7 +99,7 @@ class Myposts extends Component {
         return ( 
             <div style={{backgroundImage: `url(https://i.ytimg.com/vi/I9RbClQ_2Wg/maxresdefault.jpg)`, 
         
-           
+            width: "100vw",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",

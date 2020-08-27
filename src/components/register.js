@@ -69,6 +69,7 @@ class Register extends Component {
             <div  style={{backgroundImage: `url(http://4.bp.blogspot.com/-FyJuSNsRrWs/TibLzmYFU3I/AAAAAAAAK40/0BGwL0v2eyk/s1600/cool+computer+backgrounds-2.jpg)`, 
         
         height: "100vh",
+        width: "100vw",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
