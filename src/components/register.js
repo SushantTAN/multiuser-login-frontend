@@ -65,17 +65,17 @@ class Register extends Component {
 
     render() { 
         return ( 
-            <div>
-            <div  style={{backgroundImage: `url(http://4.bp.blogspot.com/-FyJuSNsRrWs/TibLzmYFU3I/AAAAAAAAK40/0BGwL0v2eyk/s1600/cool+computer+backgrounds-2.jpg)`, 
+            <div style={{backgroundImage: `url(http://4.bp.blogspot.com/-FyJuSNsRrWs/TibLzmYFU3I/AAAAAAAAK40/0BGwL0v2eyk/s1600/cool+computer+backgrounds-2.jpg)`, 
         
-        height: "100vh",
-        width: "100vw",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundAttachment: "fixed",
-        }}></div>
-               <form className="border-dark mx-auto" onSubmit={this.onS} style={{width: "15rem", position: "absolute", top: "10rem", left: "41%"}}>
+            height: "100vh",
+            width: "100vw",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+            }}>
+            
+               <form className="border-dark" onSubmit={this.onS} style={{width: "15rem", marginLeft: "auto", marginRight: "auto", padding: "25vh 0"}}>
                     <div className="form-group">
                         <label className="text-white">Username</label>
                         <input className="form-control" id="name" onChange={this.onC}/>
