@@ -98,7 +98,7 @@ class Register extends Component {
                     <button type="submit" className="btn btn-primary">Submit</button>
    
                 </form>     
-            
+                <div style={{height: "100vh"}}> ... </div>
             </div>
         );
     }
