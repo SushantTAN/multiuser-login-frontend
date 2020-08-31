@@ -206,7 +206,7 @@ componentDidMount(){
                     {
                         this.state.filtered.map(c => {
                             return(
-                            <div className="card" style={{width: "40rem"}}>&nbsp;
+                            <div className="card bg-light" style={{width: "40rem"}}>&nbsp;
                             <table>
                             <tr>
                                 <td>{c.name}</td>

@@ -179,7 +179,7 @@ class Auth extends Component {
                     <h3>Create a post</h3>
                     <form className="border-dark mx-auto card bg-light" onSubmit={this.onS} style={{width: "30rem"}}>
                     <div className="form-group">
-                        <label >&nbsp;Describe your post</label>
+                        <label >&nbsp;Describe your post( enter a caption an also select an image )</label>
                         <div className="input-group">
                         <div className="input-group-prepend">
                             <span className="input-group-text">Caption</span>
