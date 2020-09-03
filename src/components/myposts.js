@@ -126,7 +126,7 @@ class Myposts extends Component {
                     
                            return (
                             <div key={c._id}>
-                               <div className="card bg-light mx-auto" style={{width: "35rem", position: "relative"}}>
+                               <div className="card bg-light mx-auto posts">
                                    <h6>&nbsp;{c.ownername} <span style={{position: "absolute", top: "0px", right: "0px"}}>
                                        
                                    <div className="btn-group dropright">

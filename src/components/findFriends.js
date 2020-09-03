@@ -210,7 +210,7 @@ componentDidMount(){
                             <table>
                             <tr>
                                 <td>{c.name}</td>
-                                <td>{c.email}</td>
+                                <td className="email">{c.email}</td>
                                 <td>{this.renderButton(c)}</td>
                                 
                             </tr>
@@ -229,7 +229,7 @@ componentDidMount(){
                     <thead>
                         <tr>
                             <th scope="col">Name</th>
-                            <th scope="col">Email</th>
+                            <th scope="col" className="email">Email</th>
                             <th scope="col">Befriend</th>
                         </tr>
                     </thead>
@@ -240,7 +240,7 @@ componentDidMount(){
                                    
                                        <tr>
                                         <td>{c.name}</td>
-                                        <td>{c.email}</td>
+                                        <td className="email">{c.email}</td>
                                         <td>{this.renderButton(c)}</td>
                                        </tr>
                                    

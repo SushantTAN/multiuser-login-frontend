@@ -177,7 +177,7 @@ class Auth extends Component {
 
                 <div>
                     <h3>Create a post</h3>
-                    <form className="border-dark mx-auto card bg-light" onSubmit={this.onS} style={{width: "30rem"}}>
+                    <form className="border-dark mx-auto card bg-light posts" onSubmit={this.onS}>
                     <div className="form-group">
                         <label >&nbsp;Describe your post( enter a caption an also select an image )</label>
                         <div className="input-group">
@@ -213,7 +213,7 @@ class Auth extends Component {
                               this.state.newsfeed.map(c => {
                                   return (
                                     <div>
-                                        <div className="card bg-light mx-auto" style={{width: "35rem", position: "relative"}}>
+                                        <div className="card bg-light mx-auto posts" >
                                             <h6>&nbsp;{c.ownername}</h6>
                                             <p>&nbsp;{c.description}</p>
                                             <button onClick={() => {this.setModal(c)}} type="button" className="btn btn-light">
