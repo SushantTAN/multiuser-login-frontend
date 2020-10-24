@@ -8,7 +8,8 @@ class Register extends Component {
         this.state = { 
             name: '',
             email: '',
-            password: ''
+            password: '',
+            registered: false
          }
 
          this.onC = this.onC.bind(this);
@@ -39,6 +40,16 @@ class Register extends Component {
                 console.log("the error is : " + err);
                 alert(err)
             })
+    }
+
+    renderPromptToLogin(){
+        if(this.state.registered){
+            return (
+                <div className="form-group">
+                    <p className="text-white">Your account has been registered. Goto the <Link to="/">Login page</Link> to sign in </p>
+                </div>
+            );
+        }
     }
 
     renderErrorName(){
@@ -97,6 +108,7 @@ class Register extends Component {
                     <Link to="/">Already have an account? Log in</Link>
                   
                     <button type="submit" className="btn btn-primary">Submit</button>
+                    {this.renderPromptToLogin()}
    
                 </form>     
                 <div style={{height: "100vh"}}> ... </div>
