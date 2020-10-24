@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Register extends Component {
     constructor(props) {
@@ -32,6 +32,7 @@ class Register extends Component {
             .then((res) => {
 
                  console.log(res);
+                return (<Redirect to="/" />);
 
             })
             .catch(err => {
