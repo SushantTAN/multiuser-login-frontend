@@ -33,7 +33,9 @@ class Register extends Component {
             .then((res) => {
 
                  console.log(res);
-                return (<Redirect to="/" />);
+                this.setState({
+                    registered: true
+                })
 
             })
             .catch(err => {
