@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Register extends Component {
     constructor(props) {
@@ -14,7 +14,12 @@ class Register extends Component {
 
          this.onC = this.onC.bind(this);
          this.onS = this.onS.bind(this);
+
+        //  this.history = useHistory();
     }
+
+
+    
 
     onC(e){
         this.setState({
@@ -29,13 +34,15 @@ class Register extends Component {
             email: this.state.email,
             password: this.state.password
         }
-        axios.post('https://polar-plains-75515.herokuapp.com/api/user/register', regObj )
+        axios.post('https://sleepy-retreat-07400.herokuapp.com/api/user/register', regObj )
             .then((res) => {
 
                  console.log(res);
                 this.setState({
                     registered: true
-                })
+                });
+                // this.history.push('/');
+                this.props.history.push("/"); 
 
             })
             .catch(err => {
